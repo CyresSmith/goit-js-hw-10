@@ -1,6 +1,6 @@
-const { merge } = require('webpack-merge')
+const { merge } = require('webpack-merge');
 
-const common = require('./webpack.common')
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
   // Set the mode to development or production
@@ -33,6 +33,11 @@ module.exports = merge(common, {
           { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
+
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader',
+      },
     ],
   },
-})
+});
