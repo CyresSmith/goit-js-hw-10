@@ -1,10 +1,10 @@
 {
-  "name": "webpack-boilerplate",
-  "version": "3.0.1",
-  "description": "Sensible webpack 5 boilerplate using Babel and PostCSS.",
+  "name": "goit-js-hw-10",
+  "version": "1",
+  "description": "",
   "main": "index.js",
-  "author": "Tania Rascia",
-  "license": "MIT",
+  "author": "Ivan Reshetnikov",
+  "license": "",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
@@ -13,8 +13,7 @@
   },
   "keywords": [
     "webpack",
-    "webpack 5",
-    "webpack boilerplate"
+    "webpack 5"
   ],
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -30,8 +29,9 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-webpack": "^0.13.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "handlebars": "^4.7.7",
+    "handlebars-loader": "^1.7.2",
     "html-webpack-plugin": "^5.3.2",
+    "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.4.2",
     "postcss-loader": "^6.2.0",
     "postcss-preset-env": "^6.7.0",
@@ -44,9 +44,5 @@
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1",
     "webpack-merge": "^5.8.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:taniarascia/webpack-boilerplate"
   }
 }

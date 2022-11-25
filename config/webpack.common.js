@@ -34,8 +34,6 @@ module.exports = {
       ],
     }),
 
-    // Generates an HTML file from a template
-    // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     new HtmlWebpackPlugin({
       title: 'webpack Boilerplate',
       // favicon: paths.src + '/images/favicon.png',
@@ -47,6 +45,8 @@ module.exports = {
   // Determine how modules within the project are treated
   module: {
     rules: [
+      { test: /\.handlebars$/, loader: 'handlebars-loader' },
+
       // JavaScript: Use Babel to transpile JavaScript files
       { test: /\.js$/, use: ['babel-loader'] },
 
