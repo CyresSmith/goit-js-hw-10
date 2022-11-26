@@ -2,6 +2,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { merge } = require('webpack-merge');
 const ghpages = require('gh-pages');
+ghpages.publish('dist', function (err) {});
 
 const paths = require('./paths');
 const common = require('./webpack.common');
@@ -54,5 +55,3 @@ module.exports = merge(common, {
     maxAssetSize: 512000,
   },
 });
-
-ghpages.publish('dist', function (err) {});
