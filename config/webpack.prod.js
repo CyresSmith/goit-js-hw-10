@@ -2,7 +2,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { merge } = require('webpack-merge');
 const ghpages = require('gh-pages');
-ghpages.publish('dist', function (err) {});
+ghpages.publish('dist');
 
 const paths = require('./paths');
 const common = require('./webpack.common');
