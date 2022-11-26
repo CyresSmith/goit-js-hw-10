@@ -1,9 +1,12 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const { merge } = require('webpack-merge')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const { merge } = require('webpack-merge');
+const ghpages = require('gh-pages');
 
-const paths = require('./paths')
-const common = require('./webpack.common')
+ghpages.publish('dist', function (err) {});
+
+const paths = require('./paths');
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -52,4 +55,4 @@ module.exports = merge(common, {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-})
+});

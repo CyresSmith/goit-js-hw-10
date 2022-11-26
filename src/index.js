@@ -1,6 +1,16 @@
-import './css/styles.css';
+// eslint-disable-next-line no-undef
 const _ = require('lodash');
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchCountries } from './js/fetchCountries.js';
+
+import './css/styles.css';
+
+Notify.init({
+  distance: '10px',
+  position: 'center-top',
+  cssAnimationStyle: 'from-top',
+  showOnlyTheLastOne: 'true',
+});
 
 const DEBOUNCE_DELAY = 300;
 
@@ -19,24 +29,22 @@ function onSearch(e) {
   const searchQuery = e.target.value.trim();
 
   if (searchQuery === '') {
-    refs.countryInfo.innerHTML = '';
-    refs.countryList.innerHTML = '';
+    markupReset(e);
+    Notify.info('Please enter country name.');
   } else {
     fetchCountries(searchQuery)
       .then(countries => {
         switch (true) {
           case countries.length === 1:
-            refs.countryList.innerHTML = '';
             renderCountryInfo(countries);
             break;
 
           case countries.length > 2 && countries.length <= 10:
-            refs.countryInfo.innerHTML = '';
             renderCountryList(countries);
             break;
 
           case countries.length > 10:
-            console.log(
+            Notify.info(
               'Too many matches found. Please enter a more specific name.'
             );
             break;
@@ -45,11 +53,26 @@ function onSearch(e) {
             break;
         }
       })
-      .catch(e => e);
+      .catch(e => {
+        e;
+        Notify.failure('Oops, there is no country with that name');
+      });
   }
 }
 
+const markupReset = e => {
+  refs.countryInfo.innerHTML = '';
+  refs.countryInfo.classList.add('visually-hidden');
+  refs.countryList.innerHTML = '';
+  refs.countryList.classList.add('visually-hidden');
+  e.target.value = '';
+};
+
 const renderCountryInfo = countries => {
+  refs.countryList.classList.add('visually-hidden');
+  refs.countryList.innerHTML = '';
+  refs.countryInfo.classList.remove('visually-hidden');
+
   refs.countryInfo.innerHTML = `
   <img src="${countries[0].flags.svg}" alt="flag" width="48" height="36">  
   <b class="countrie-name">${countries[0].name.official}</b>
@@ -60,15 +83,19 @@ const renderCountryInfo = countries => {
 };
 
 const renderCountryList = countries => {
+  refs.countryInfo.classList.add('visually-hidden');
+  refs.countryInfo.innerHTML = '';
+  refs.countryList.classList.remove('visually-hidden');
+
   const markup = countries
-    .map(country => {
-      return `
+    .map(
+      country => `
           <li>
             <img src="${country.flags.svg}" alt="flag" width="36" height="27">
             <b>${country.name.official}</b>
           </li>
-      `;
-    })
+      `
+    )
     .join('');
 
   refs.countryList.innerHTML = markup;

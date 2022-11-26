@@ -15,6 +15,10 @@
     "webpack",
     "webpack 5"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyresSmith/goit-js-hw-10.git"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
@@ -29,6 +33,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-webpack": "^0.13.1",
     "eslint-plugin-prettier": "^4.0.0",
+    "gh-pages": "^4.0.0",
     "handlebars-loader": "^1.7.2",
     "html-webpack-plugin": "^5.3.2",
     "lodash": "^4.17.21",
@@ -44,5 +49,9 @@
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "notiflix": "^3.2.5",
+    "toastr": "^2.1.4"
   }
 }

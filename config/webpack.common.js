@@ -35,8 +35,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      title: 'webpack Boilerplate',
-      // favicon: paths.src + '/images/favicon.png',
+      title: 'CyresSmith/goit-js-hw-10',
       template: paths.src + '/index.html', // template file
       filename: 'index.html', // output file
     }),
