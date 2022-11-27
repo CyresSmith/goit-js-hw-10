@@ -29,7 +29,7 @@ function onSearch(e) {
   const searchQuery = e.target.value.trim();
 
   if (searchQuery === '') {
-    markupReset(e);
+    markupReset();
     Notify.info('Please enter country name.');
   } else {
     fetchCountries(searchQuery)
@@ -55,17 +55,18 @@ function onSearch(e) {
       })
       .catch(e => {
         e;
+        markupReset();
         Notify.failure('Oops, there is no country with that name');
       });
   }
 }
 
-const markupReset = e => {
+const markupReset = () => {
   refs.countryInfo.innerHTML = '';
   refs.countryInfo.classList.add('visually-hidden');
   refs.countryList.innerHTML = '';
   refs.countryList.classList.add('visually-hidden');
-  e.target.value = '';
+  refs.searchQueryInput.value = '';
 };
 
 const renderCountryInfo = countries => {
